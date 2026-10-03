@@ -1,0 +1,7 @@
+{
+  "name": "all-sources",
+  "scripts": {
+    "dev": "vite --port 4321",
+    "test": "vitest run"
+  }
+}

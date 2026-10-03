@@ -1,0 +1,8 @@
+name: CI
+on: [push]
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Lint
+        run: npm run lint

@@ -1,0 +1,75 @@
+{
+  "id": "iss-12",
+  "identifier": "FAC-12",
+  "title": "Add drawbridge lever",
+  "description": "The drawbridge needs a lever in the gatehouse.\n\nSee https://github.com/JaneDoe/castle-sim/pull/7 for the first attempt.",
+  "url": "https://linear.app/acme/issue/FAC-12/add-drawbridge-lever",
+  "updatedAt": "2026-09-30T10:00:00.000Z",
+  "branchName": "tester/fac-12-add-drawbridge-lever",
+  "state": { "type": "unstarted", "name": "Todo" },
+  "labels": {
+    "nodes": [
+      { "id": "lbl-build", "name": "factory:build" },
+      { "id": "lbl-repo", "name": "repo:castle-sim" }
+    ]
+  },
+  "team": { "id": "team-1", "key": "FAC" },
+  "project": { "id": "proj-1", "name": "Castle" },
+  "parent": { "id": "iss-10", "identifier": "FAC-10", "title": "Castle epic", "state": { "type": "started" } },
+  "children": {
+    "nodes": [
+      { "id": "iss-13", "identifier": "FAC-13", "title": "Lever art", "state": { "type": "completed" } },
+      { "id": "iss-16", "identifier": "FAC-16", "title": "Lever sound", "state": { "type": "backlog" } }
+    ]
+  },
+  "relations": {
+    "nodes": [
+      {
+        "type": "blocks",
+        "relatedIssue": { "id": "iss-15", "identifier": "FAC-15", "title": "Portcullis", "state": { "type": "backlog" } }
+      },
+      {
+        "type": "related",
+        "relatedIssue": { "id": "iss-17", "identifier": "FAC-17", "title": "Moat", "state": { "type": "started" } }
+      }
+    ]
+  },
+  "inverseRelations": {
+    "nodes": [
+      {
+        "type": "blocks",
+        "issue": { "id": "iss-11", "identifier": "FAC-11", "title": "Gatehouse mesh", "state": { "type": "completed" } }
+      },
+      {
+        "type": "blocks",
+        "issue": { "id": "iss-14", "identifier": "FAC-14", "title": "Physics hooks", "state": { "type": "started" } }
+      },
+      {
+        "type": "related",
+        "issue": { "id": "iss-18", "identifier": "FAC-18", "title": "Unrelated", "state": { "type": "started" } }
+      }
+    ]
+  },
+  "attachments": {
+    "nodes": [
+      { "url": "https://github.com/JaneDoe/castle-sim/pull/7", "title": "PR #7", "sourceType": "githubPr" },
+      { "url": "https://www.figma.com/file/abc", "title": "Lever mock", "sourceType": "figma" }
+    ]
+  },
+  "comments": {
+    "nodes": [
+      {
+        "body": "Second comment, newest.",
+        "createdAt": "2026-09-29T12:00:00.000Z",
+        "user": { "name": "Test User", "displayName": "tester" },
+        "botActor": null
+      },
+      {
+        "body": "First comment, from a bot.",
+        "createdAt": "2026-09-28T12:00:00.000Z",
+        "user": null,
+        "botActor": { "name": "Bugbot" }
+      }
+    ]
+  }
+}

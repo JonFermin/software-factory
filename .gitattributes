@@ -1,0 +1,27 @@
+# Normalise line endings: LF in the repo and in checkouts (Windows included), so worker-generated
+# diffs and the scheduler wrappers never flip-flop. Only Windows batch files need CRLF.
+* text=auto eol=lf
+
+*.cmd text eol=crlf
+*.bat text eol=crlf
+*.ps1 text eol=crlf
+
+# Binary assets: never normalised, never diffed as text.
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.webp binary
+*.ico binary
+*.pdf binary
+*.zip binary
+*.gz binary
+*.woff binary
+*.woff2 binary
+*.ttf binary
+*.db binary
+*.sqlite binary
+*.exe binary
+*.dll binary
+*.so binary
+*.dylib binary

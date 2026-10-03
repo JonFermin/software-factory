@@ -1,0 +1,19 @@
+{
+  "author": {"id": "U_me", "is_bot": false, "login": "JaneDoe", "name": "Jane Doe"},
+  "baseRefName": "main",
+  "baseRefOid": "eeee5555eeee5555eeee5555eeee5555eeee5555",
+  "closedAt": "2026-09-15T12:30:00Z",
+  "createdAt": "2026-09-15T12:00:00Z",
+  "headRefName": "feat/merged-example",
+  "headRefOid": "ffff6666ffff6666ffff6666ffff6666ffff6666",
+  "headRepository": {"id": "R_webapp", "name": "webapp", "nameWithOwner": ""},
+  "headRepositoryOwner": {"id": "U_me", "name": "Jane Doe", "login": "JaneDoe"},
+  "isDraft": false,
+  "mergeable": "UNKNOWN",
+  "mergedAt": "2026-09-15T12:30:00Z",
+  "number": 10,
+  "state": "MERGED",
+  "title": "Merged example",
+  "updatedAt": "2026-09-15T12:30:00Z",
+  "url": "https://github.com/JaneDoe/webapp/pull/10"
+}

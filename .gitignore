@@ -1,0 +1,23 @@
+# secrets
+.env
+**/.env
+# python
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+.ruff_cache/
+dist/
+build/
+*.egg-info/
+# runtime data (lives under the per-profile data dir, but never commit strays)
+*.db
+*.db-journal
+worktrees/
+wt/
+*.log
+# profiles: real ones live in the user config dir (or $SOFTWARE_FACTORY_PROFILES_DIR), never here;
+# only the README and the example profile are tracked
+/profiles/*
+!/profiles/README.md
+!/profiles/example/

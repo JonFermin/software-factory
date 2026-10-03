@@ -1,0 +1,15 @@
+{
+  "errors": [
+    {
+      "message": "Rate limit exceeded",
+      "extensions": {
+        "type": "ratelimited",
+        "code": "RATELIMITED",
+        "statusCode": 400,
+        "userError": false,
+        "userPresentableMessage": "You have exceeded the API rate limit. Please try again later.",
+        "meta": {}
+      }
+    }
+  ]
+}

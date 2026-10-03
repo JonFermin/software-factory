@@ -1,0 +1,171 @@
+{
+  "author": {"id": "U_me", "is_bot": false, "login": "JaneDoe", "name": "Jane Doe"},
+  "baseRefName": "main",
+  "baseRefOid": "9999aaaa9999aaaa9999aaaa9999aaaa9999aaaa",
+  "body": "## Summary\n\nAdds **`mech`**, a mechanism-analysis framework on top of build123d.\n",
+  "closedAt": null,
+  "comments": [
+    {
+      "id": "IC_dependabot",
+      "author": {"login": "dependabot[bot]"},
+      "authorAssociation": "CONTRIBUTOR",
+      "body": "Superseded by #5.",
+      "createdAt": "2026-09-30T12:30:00Z",
+      "includesCreatedEdit": false,
+      "isMinimized": false,
+      "minimizedReason": "",
+      "reactionGroups": [],
+      "url": "https://github.com/JaneDoe/cadlib/pull/4#issuecomment-900000001",
+      "viewerDidAuthor": false
+    },
+    {
+      "id": "IC_reviewer_a_1",
+      "author": {"login": "reviewer-a"},
+      "authorAssociation": "COLLABORATOR",
+      "body": "Also please add a changelog entry.",
+      "createdAt": "2026-09-30T11:00:00Z",
+      "includesCreatedEdit": false,
+      "isMinimized": false,
+      "minimizedReason": "",
+      "reactionGroups": [],
+      "url": "https://github.com/JaneDoe/cadlib/pull/4#issuecomment-900000002",
+      "viewerDidAuthor": false
+    }
+  ],
+  "createdAt": "2026-09-29T19:32:35Z",
+  "headRefName": "feat/mech-framework",
+  "headRefOid": "4444bbbb4444bbbb4444bbbb4444bbbb4444bbbb",
+  "headRepository": {"id": "R_cadlib", "name": "cadlib", "nameWithOwner": ""},
+  "headRepositoryOwner": {"id": "U_me", "name": "Jane Doe", "login": "JaneDoe"},
+  "isDraft": false,
+  "mergeable": "MERGEABLE",
+  "mergedAt": null,
+  "number": 4,
+  "reviewRequests": [],
+  "reviews": [
+    {
+      "id": "PRR_cursor",
+      "author": {"login": "cursor[bot]"},
+      "authorAssociation": "NONE",
+      "body": "Bug: `solve()` ignores the tolerance argument.",
+      "submittedAt": "2026-09-30T09:30:00Z",
+      "includesCreatedEdit": false,
+      "reactionGroups": [],
+      "state": "COMMENTED",
+      "commit": {"oid": "4444bbbb4444bbbb4444bbbb4444bbbb4444bbbb"}
+    },
+    {
+      "id": "PRR_reviewer_a",
+      "author": {"login": "reviewer-a"},
+      "authorAssociation": "COLLABORATOR",
+      "body": "Looks good overall; two blocking comments inline.",
+      "submittedAt": "2026-09-30T10:00:00Z",
+      "includesCreatedEdit": false,
+      "reactionGroups": [],
+      "state": "CHANGES_REQUESTED",
+      "commit": {"oid": "4444bbbb4444bbbb4444bbbb4444bbbb4444bbbb"}
+    },
+    {
+      "id": "PRR_reviewer_b_empty",
+      "author": {"login": "reviewer-b"},
+      "authorAssociation": "MEMBER",
+      "body": "",
+      "submittedAt": "2026-09-30T10:15:00Z",
+      "includesCreatedEdit": false,
+      "reactionGroups": [],
+      "state": "APPROVED",
+      "commit": {"oid": "4444bbbb4444bbbb4444bbbb4444bbbb4444bbbb"}
+    },
+    {
+      "id": "PRR_me",
+      "author": {"login": "JaneDoe"},
+      "authorAssociation": "OWNER",
+      "body": "Replying to myself; this must never count as feedback.",
+      "submittedAt": "2026-09-30T12:00:00Z",
+      "includesCreatedEdit": false,
+      "reactionGroups": [],
+      "state": "COMMENTED",
+      "commit": {"oid": "4444bbbb4444bbbb4444bbbb4444bbbb4444bbbb"}
+    }
+  ],
+  "state": "OPEN",
+  "statusCheckRollup": [
+    {
+      "__typename": "CheckRun",
+      "completedAt": "2026-10-01T21:19:07Z",
+      "conclusion": "SUCCESS",
+      "detailsUrl": "https://github.com/JaneDoe/cadlib/actions/runs/100000001/job/200000001",
+      "name": "lint",
+      "startedAt": "2026-10-01T21:16:33Z",
+      "status": "COMPLETED",
+      "workflowName": "CI"
+    },
+    {
+      "__typename": "CheckRun",
+      "completedAt": "2026-10-01T21:18:48Z",
+      "conclusion": "FAILURE",
+      "detailsUrl": "https://github.com/JaneDoe/cadlib/actions/runs/100000001/job/200000002",
+      "name": "test (3.13)",
+      "startedAt": "2026-10-01T21:16:31Z",
+      "status": "COMPLETED",
+      "workflowName": "CI"
+    },
+    {
+      "__typename": "CheckRun",
+      "completedAt": "0001-01-01T00:00:00Z",
+      "conclusion": "",
+      "detailsUrl": "https://github.com/JaneDoe/cadlib/actions/runs/100000001/job/200000003",
+      "name": "build-docs",
+      "startedAt": "2026-10-01T21:16:37Z",
+      "status": "IN_PROGRESS",
+      "workflowName": "CI"
+    },
+    {
+      "__typename": "CheckRun",
+      "completedAt": "2026-10-01T21:16:40Z",
+      "conclusion": "SKIPPED",
+      "detailsUrl": "https://github.com/JaneDoe/cadlib/actions/runs/100000001/job/200000004",
+      "name": "release",
+      "startedAt": "2026-10-01T21:16:40Z",
+      "status": "COMPLETED",
+      "workflowName": "CI"
+    },
+    {
+      "__typename": "CheckRun",
+      "completedAt": "2026-10-01T22:18:08Z",
+      "conclusion": "NEUTRAL",
+      "detailsUrl": "https://github.com/JaneDoe/cadlib/runs/200000005",
+      "name": "CodeQL",
+      "startedAt": "2026-10-01T22:18:06Z",
+      "status": "COMPLETED",
+      "workflowName": ""
+    },
+    {
+      "__typename": "CheckRun",
+      "completedAt": "2026-10-01T21:57:46Z",
+      "conclusion": "ACTION_REQUIRED",
+      "detailsUrl": "https://github.com/JaneDoe/cadlib/pull/4",
+      "name": "Merge Check",
+      "startedAt": "2026-10-01T21:57:46Z",
+      "status": "COMPLETED",
+      "workflowName": ""
+    },
+    {
+      "__typename": "StatusContext",
+      "context": "ci/external-pending",
+      "state": "PENDING",
+      "targetUrl": "https://ci.example.invalid/builds/1",
+      "startedAt": "2026-10-01T21:16:30Z"
+    },
+    {
+      "__typename": "StatusContext",
+      "context": "ci/external-failed",
+      "state": "FAILURE",
+      "targetUrl": "https://ci.example.invalid/builds/2",
+      "startedAt": "2026-10-01T21:16:30Z"
+    }
+  ],
+  "title": "Add mech: mechanism analysis framework (kinematics, clearances, loads, viewer)",
+  "updatedAt": "2026-10-01T21:16:54Z",
+  "url": "https://github.com/JaneDoe/cadlib/pull/4"
+}

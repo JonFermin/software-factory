@@ -1,0 +1,46 @@
+# Example software-factory profile. Copy it, don't edit it in place:
+#
+#   <config root>/software-factory/profiles/<name>/factory.toml
+#     <config root> = ~/Library/Application Support (macOS), else $XDG_CONFIG_HOME or ~/.config
+#                     (Linux and Windows; not %APPDATA%, which packaged apps virtualize)
+#   or any directory named by SOFTWARE_FACTORY_PROFILES_DIR.
+#
+# Secrets go in a .env next to the copied factory.toml (never in this file): CLAUDE_CODE_OAUTH_TOKEN
+# (or ANTHROPIC_API_KEY), LINEAR_API_KEY, SLACK_BOT_TOKEN, SLACK_USER_ID, and optionally
+# GH_WORKER_TOKEN, a fine-grained read-only PAT; without it workers run gh unauthenticated
+# (the engine supplies PR/CI/review context). See factory.example.toml for every key.
+
+[profile]
+employer = false
+mode = "full"
+# Rollout ladder: start with upkeep on PRs you already have; add "build", then "refine" and "plan",
+# once `factory report` shows a week of healthy merge and rework numbers.
+enabled_kinds = ["ci", "conflict", "rc", "rv"]
+max_parallel = 3
+
+[provider]
+kind = "oauth"
+model = "claude-opus-5-5"
+effort = "high"
+max_turns = 200
+
+[github]
+login = ""                       # empty = detect with `gh api user`
+owners = ["your-github-login"]   # repos owned by these accounts are managed
+
+[repos]
+root = "~/code"                  # local clones live directly under this directory
+include = []
+exclude = []
+
+# Visual repos (games, UIs) get Playwright screenshots in the PR evidence. Give each its own port,
+# pinned strictly, so parallel workers never screenshot each other's dev server.
+[repos.overrides.my-game]
+visual = true
+dev_command = "npm run dev -- --port 5180 --strictPort"
+dev_port = 5180
+
+[repos.overrides.my-site]
+visual = true
+dev_command = "npm run dev -- --port 5181 --strictPort"
+dev_port = 5181

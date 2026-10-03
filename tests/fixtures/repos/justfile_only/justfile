@@ -1,0 +1,12 @@
+default:
+    @just --list
+
+# run the tests
+test *ARGS:
+    pytest {{ARGS}}
+
+@check:
+    ruff check .
+
+deploy env:
+    echo {{env}}

@@ -1,0 +1,38 @@
+[
+  {
+    "author": {"id": "U_me", "is_bot": false, "login": "JaneDoe", "type": "User", "url": "https://github.com/JaneDoe"},
+    "isDraft": false,
+    "number": 4,
+    "repository": {"name": "cadlib", "nameWithOwner": "JaneDoe/cadlib"},
+    "title": "Add mech: mechanism analysis framework (kinematics, clearances, loads, viewer)",
+    "updatedAt": "2026-10-01T21:16:54Z",
+    "url": "https://github.com/JaneDoe/cadlib/pull/4"
+  },
+  {
+    "author": {"id": "U_me", "is_bot": false, "login": "JaneDoe", "type": "User", "url": "https://github.com/JaneDoe"},
+    "isDraft": true,
+    "number": 12,
+    "repository": {"name": "game", "nameWithOwner": "JaneDoe/game"},
+    "title": "factory: level-up menu tests",
+    "updatedAt": "2026-09-30T08:00:00Z",
+    "url": "https://github.com/JaneDoe/game/pull/12"
+  },
+  {
+    "author": {"id": "U_me", "is_bot": false, "login": "JaneDoe", "type": "User", "url": "https://github.com/JaneDoe"},
+    "isDraft": false,
+    "number": 7,
+    "repository": {"name": "webapp", "nameWithOwner": "JaneDoe/webapp"},
+    "title": "Old PR outside the authored window",
+    "updatedAt": "2026-07-01T10:00:00Z",
+    "url": "https://github.com/JaneDoe/webapp/pull/7"
+  },
+  {
+    "author": {"id": "U_me", "is_bot": false, "login": "JaneDoe", "type": "User", "url": "https://github.com/JaneDoe"},
+    "isDraft": false,
+    "number": 99,
+    "repository": {"name": "upstream-tool", "nameWithOwner": "someone-else/upstream-tool"},
+    "title": "Contribution to a repo the factory does not manage",
+    "updatedAt": "2026-10-01T09:00:00Z",
+    "url": "https://github.com/someone-else/upstream-tool/pull/99"
+  }
+]

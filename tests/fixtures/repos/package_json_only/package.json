@@ -1,0 +1,12 @@
+{
+  "name": "fixture",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint .",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "preview": "vite preview"
+  }
+}

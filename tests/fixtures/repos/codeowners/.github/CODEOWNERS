@@ -1,0 +1,23 @@
+# Default owners
+*                 @acme/core-team
+
+# Docs are mine
+/docs/            @me-login
+docs/*.md         @acme/docs-team @me-login
+
+# Security-sensitive
+src/auth/**       @acme/security
+src/billing/**    @acme/payments bob@example.com
+
+# Later rule for the same pattern hands auth to me (last match wins)
+src/auth/**       @me-login
+
+# The opposite: infra was mine, then given to platform
+infra/**          @me-login
+infra/**          @acme/platform
+
+# Unowned override
+/generated/
+
+# escaped space in a pattern
+path\ with\ spaces/** @acme/weird

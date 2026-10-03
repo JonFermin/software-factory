@@ -1,0 +1,47 @@
+name: CI
+on:
+  push:
+    branches: [main]
+  pull_request:
+defaults:
+  run:
+    shell: bash
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Install dependencies
+        run: npm ci
+      - name: Lint
+        run: npm run lint
+      - name: Typecheck
+        run: npm run typecheck
+      - name: Decide whether to run tests
+        run: |
+          if [ "${{ github.event_name }}" = "push" ]; then
+            echo "run=true" >> $GITHUB_OUTPUT
+          fi
+      - name: Unit and integration tests
+        run: |
+          npm test
+          npx vitest run --dir integration
+      - name: Shell logic step
+        run: |
+          set -euo pipefail
+          for f in a b; do echo $f; done
+          npm run test:extra
+      - name: Build
+        run: npm run build
+        working-directory: apps/web
+      - name: Upload coverage
+        run: npx codecov
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to production
+        run: npm run deploy

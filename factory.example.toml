@@ -1,0 +1,158 @@
+# software-factory profile -- annotated example of every key.
+#
+# A profile is a directory: <profiles_dir>/<name>/factory.toml (this file) + <profiles_dir>/<name>/.env
+# (secrets, never committed). <profiles_dir> is --profiles-dir, else $SOFTWARE_FACTORY_PROFILES_DIR,
+# else <config root>/software-factory/profiles when it exists (<config root> = ~/Library/Application
+# Support on macOS, else $XDG_CONFIG_HOME or ~/.config, Windows included), else
+# <repo>/profiles (which only ships profiles/example/). One process loads exactly one profile;
+# nothing is shared between profiles. See profiles/README.md for creating one.
+#
+# Secrets (.env, never in this file):
+#   CLAUDE_CODE_OAUTH_TOKEN   provider.kind = "oauth"   (from `claude setup-token`; personal only)
+#   ANTHROPIC_API_KEY         provider.kind = "api_key"
+#   AWS_ACCESS_KEY_ID / AWS_SECRET_ACCESS_KEY / AWS_SESSION_TOKEN   bedrock, only when not using ambient creds
+#   GOOGLE_APPLICATION_CREDENTIALS                                  vertex, only when not using ADC
+#   LINEAR_API_KEY            tracker
+#   SLACK_BOT_TOKEN, SLACK_USER_ID   Slack DM to self (chat:write + im:write)
+#   GH_WORKER_TOKEN           optional: a fine-grained READ-ONLY GitHub PAT (contents, pull requests,
+#                             actions: read) handed to workers as GH_TOKEN for `gh` reads. Without it
+#                             workers have no gh authentication at all, by design (your own gh login is
+#                             never reachable from a worker); the engine puts the PR, CI and review
+#                             context in the prompt. `factory doctor` warns when it is absent.
+
+# Top-level scalars live under [profile] (config.load_profile flattens this table).
+[profile]
+name = "example"                 # must equal the directory name
+employer = false                 # true = employer profile: no oauth, disclosure footer mandatory, defaults to observe
+mode = "full"                    # "observe" (rv only, zero outward writes, everything else dry-run) | "full"
+# Rollout ladder (change config, not code; the audit log is the evidence for each rung):
+#   observe (rv only) -> ["ci", "conflict"] -> + "rc" -> + "build" (self-labeled tickets) -> + "plan"
+enabled_kinds = ["ci", "conflict", "rc", "rv"]   # kinds allowed to run for real in mode = "full"
+max_parallel = 3                 # concurrent workers (actions on the same PR/issue still run sequentially:
+                                 # ci -> conflict -> rc -> rv on a PR, refine -> plan -> build on an issue)
+# Failed attempts per (target, kind, version) before giving up; the cap is flagged once. PR kinds re-arm
+# on a new head/base/feedback, refine/plan on an issue edit; build is keyed by the issue id, so only
+# `factory run build KEY` retries it. A provider rate/usage limit stops the tick (exit 2) and spends
+# no attempt.
+max_attempts = 3
+session_timeout_min = 30         # whole-session timeout per worker
+authored_max_age_days = 30       # my open PRs updated within this window are managed
+review_max_age_days = 7          # review requests updated within this window are reviewed
+# Appended to every factory-opened PR body (mandatory for employer profiles).
+disclosure_footer = """---
+_This pull request was prepared by an AI coding agent (software-factory, Claude) and is a draft for human review._"""
+
+[provider]
+kind = "oauth"                   # "oauth" | "api_key" | "bedrock" | "vertex"
+model = "claude-opus-5-5"        # logical model for every worker
+# fallback_model = "claude-sonnet-5"   # optional; used by the SDK when the primary is overloaded
+effort = "high"                  # "low" | "medium" | "high" | "xhigh" | "max"
+max_turns = 200                  # per worker session
+# Claude Code CLI the Agent SDK launches. Unset = the SDK's bundled CLI, else `claude` on PATH
+# (Windows: a native claude.exe only; the SDK refuses npm's claude.cmd shim). It must be at least the
+# version the SDK was built against -- an older CLI rejects the model above and every worker dies
+# at startup; `factory doctor` checks and `claude update` is the usual fix. Set this only to point
+# at a newer claude.exe that is not on PATH.
+# cli_path = "C:/Users/me/.local/bin/claude.exe"
+aws_profile = "default"          # bedrock only (optional; ambient credentials otherwise)
+aws_region = "us-east-1"         # bedrock only (required)
+gcp_project = "my-gcp-project"   # vertex only (required)
+gcp_region = "us-east5"          # vertex only (required)
+
+# Per-provider model id overrides: logical name -> provider id.
+[provider.model_ids]
+# "claude-opus-5-5" = "anthropic.claude-opus-5-5-v1:0"   # e.g. on Bedrock
+
+[github]
+login = ""                       # my GitHub login; empty = detect with `gh api user`
+owners = ["your-github-login"]   # repos under repos.root whose origin owner is listed here are managed
+ignored_logins = ["dependabot[bot]", "github-actions[bot]"]   # feedback from these is ignored
+bot_reviewers = ["cursor[bot]", "copilot-pull-request-reviewer[bot]", "coderabbitai[bot]"]   # fallible bots
+
+[repos]
+root = "~/code"                  # parent directory scanned for git clones with a GitHub origin
+include = []                     # dir names or owner/name to manage even when the owner is not listed
+exclude = []                     # dir names, repo names or owner/name never to manage
+
+# Per-repo overrides, keyed by dir name or owner/name. Every field is optional.
+[repos.overrides.my-game]
+visual = true                    # dev server + Playwright screenshots in PR evidence
+dev_command = "npm run dev -- --port 5180 --strictPort"   # dev server command (discovered from package.json
+                                 # when unset); pin the port strictly so two visual repos never share one
+dev_port = 5180                  # port the dev server listens on (unique across overrides)
+dev_routes = ["/"]               # routes to capture
+setup = ["npm ci"]               # replaces discovered setup commands
+verify = ["npm run typecheck", "npm test"]   # replaces discovered verification commands
+sensitive_globs = ["src/save/**"]            # added to policy.sensitive_globs for this repo
+min_readiness = 50               # replaces policy.min_readiness for this repo
+default_branch = "main"          # replaces origin/HEAD detection
+
+[repos.overrides."your-github-login/docs-site"]   # owner/name keys work too
+visual = true
+dev_command = "npm run dev -- --port 5181 --strictPort"
+dev_port = 5181
+
+[linear]
+enabled = true
+team_keys = []                   # restrict to these team keys; empty = all teams
+label_refine = "factory:refine"
+label_plan = "factory:plan"
+label_build = "factory:build"
+repo_label_prefix = "repo:"      # repo:<name> label overrides repo inference
+
+[resolve]
+min_confidence = 0.7             # below this the issue is flagged and skipped
+sibling_min_votes = 2            # sibling-issue majority vote needs at least this many linked repos
+
+[policy]
+# Changed files matching any of these are never pushed by the factory (gitwildmatch semantics).
+sensitive_globs = [
+  "**/auth/**", "**/authentication/**", "**/security/**", "**/billing/**", "**/payments/**",
+  "**/migrations/**", "**/migrate/**", "**/*.pem", "**/*.key", "**/.env*", ".github/workflows/**",
+  "**/CODEOWNERS",
+]
+# CODEOWNERS is applied per changed file with GitHub's last-match-wins rule: a changed file whose
+# owners (your login, or a team listed here) do not include you is never pushed.
+my_teams = []                    # CODEOWNERS teams that count as mine (e.g. "@acme-corp/platform")
+allow_web_tools = false          # WebFetch / WebSearch for workers
+extra_allowed_tools = []         # additional tool names workers may call
+# Not configurable, by design: workers run git with hooks disabled (core.hooksPath -> a path under a regular file, so no hook
+# can ever be planted there) and
+# every GitHub push URL rewritten to an unusable transport, load no .claude/settings.json from the repo
+# (its CLAUDE.md / AGENTS.md are appended to the prompt instead), and have no gh login unless
+# GH_WORKER_TOKEN is set. The engine's own git and pushes run with hooks disabled too.
+min_readiness = 60               # below this, PR evidence carries a low-readiness warning
+
+[notify]
+desktop = true                   # desktop toast (desktop-notifier)
+slack = true                     # Slack DM to SLACK_USER_ID via SLACK_BOT_TOKEN
+
+[schedule]                       # validated when the profile loads (a typo is a config error)
+interval_minutes = 20            # `factory tick` cadence for `schedule install` (1..1439)
+digest_weekday = "MON"           # weekly `factory report --digest --since 7d` (MON..SUN)
+digest_time = "09:00"            # HH:MM, 24-hour
+
+# ---------------------------------------------------------------------------------------------
+# Employer profile example (outside any git checkout, e.g. SOFTWARE_FACTORY_PROFILES_DIR=~/factory-profiles)
+#
+# [profile]
+# name = "work"
+# employer = true                # rejects provider.kind = "oauth"; mode defaults to "observe"
+# # mode = "observe"             # start on the first rung; flip to "full" + enabled_kinds per rung
+# enabled_kinds = ["rv"]
+# disclosure_footer = "---\n_Prepared with an AI coding agent; draft for human review._"
+#
+# [provider]
+# kind = "bedrock"
+# model = "claude-opus-5-5"
+# aws_profile = "work"
+# aws_region = "us-east-1"
+# [provider.model_ids]
+# "claude-opus-5-5" = "anthropic.claude-opus-5-5-v1:0"
+#
+# [github]
+# owners = ["acme-corp"]
+# [repos]
+# root = "~/work"
+# [policy]
+# my_teams = ["@acme-corp/platform"]

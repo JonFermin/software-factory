@@ -1,0 +1,45 @@
+{
+  "author": {"id": "U_me", "is_bot": false, "login": "JaneDoe", "name": "Jane Doe"},
+  "baseRefName": "main",
+  "baseRefOid": "aaaa1111aaaa1111aaaa1111aaaa1111aaaa1111",
+  "body": "Fixes GAM-7\n\n<!-- factory:evidence -->\n<!-- /factory:evidence -->\n",
+  "closedAt": null,
+  "comments": [],
+  "createdAt": "2026-09-30T07:00:00Z",
+  "headRefName": "gam-7-level-up-menu-tests",
+  "headRefOid": "bbbb2222bbbb2222bbbb2222bbbb2222bbbb2222",
+  "headRepository": {"id": "R_game", "name": "game", "nameWithOwner": ""},
+  "headRepositoryOwner": {"id": "U_me", "name": "Jane Doe", "login": "JaneDoe"},
+  "isDraft": true,
+  "mergeable": "CONFLICTING",
+  "mergedAt": null,
+  "number": 12,
+  "reviewRequests": [],
+  "reviews": [],
+  "state": "OPEN",
+  "statusCheckRollup": [
+    {
+      "__typename": "CheckRun",
+      "completedAt": "2026-09-30T08:05:00Z",
+      "conclusion": "SUCCESS",
+      "detailsUrl": "https://github.com/JaneDoe/game/actions/runs/36900000001/job/110500000001",
+      "name": "typecheck",
+      "startedAt": "2026-09-30T08:01:00Z",
+      "status": "COMPLETED",
+      "workflowName": "CI"
+    },
+    {
+      "__typename": "CheckRun",
+      "completedAt": "0001-01-01T00:00:00Z",
+      "conclusion": "",
+      "detailsUrl": "https://github.com/JaneDoe/game/actions/runs/36900000001/job/110500000002",
+      "name": "test",
+      "startedAt": "2026-09-30T08:01:00Z",
+      "status": "QUEUED",
+      "workflowName": "CI"
+    }
+  ],
+  "title": "factory: level-up menu tests",
+  "updatedAt": "2026-09-30T08:00:00Z",
+  "url": "https://github.com/JaneDoe/game/pull/12"
+}

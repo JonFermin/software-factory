@@ -1,0 +1,38 @@
+[
+  {
+    "author": {"id": "U_a", "is_bot": false, "login": "reviewer-a", "type": "User", "url": "https://github.com/reviewer-a"},
+    "isDraft": false,
+    "number": 21,
+    "repository": {"name": "game", "nameWithOwner": "JaneDoe/game"},
+    "title": "Direct review request",
+    "updatedAt": "2026-10-01T12:00:00Z",
+    "url": "https://github.com/JaneDoe/game/pull/21"
+  },
+  {
+    "author": {"id": "U_b", "is_bot": false, "login": "reviewer-b", "type": "User", "url": "https://github.com/reviewer-b"},
+    "isDraft": false,
+    "number": 22,
+    "repository": {"name": "game", "nameWithOwner": "JaneDoe/game"},
+    "title": "Team review request only",
+    "updatedAt": "2026-10-01T12:00:00Z",
+    "url": "https://github.com/JaneDoe/game/pull/22"
+  },
+  {
+    "author": {"id": "U_c", "is_bot": false, "login": "reviewer-c", "type": "User", "url": "https://github.com/reviewer-c"},
+    "isDraft": true,
+    "number": 23,
+    "repository": {"name": "game", "nameWithOwner": "JaneDoe/game"},
+    "title": "Draft with a review request",
+    "updatedAt": "2026-10-01T12:00:00Z",
+    "url": "https://github.com/JaneDoe/game/pull/23"
+  },
+  {
+    "author": {"id": "U_d", "is_bot": false, "login": "reviewer-d", "type": "User", "url": "https://github.com/reviewer-d"},
+    "isDraft": false,
+    "number": 24,
+    "repository": {"name": "game", "nameWithOwner": "JaneDoe/game"},
+    "title": "Stale review request outside the window",
+    "updatedAt": "2026-09-01T12:00:00Z",
+    "url": "https://github.com/JaneDoe/game/pull/24"
+  }
+]

@@ -1,0 +1,21 @@
+[
+  {
+    "author": {"id": "U_me", "is_bot": false, "login": "JaneDoe", "name": "Jane Doe"},
+    "baseRefName": "main",
+    "baseRefOid": "9999aaaa9999aaaa9999aaaa9999aaaa9999aaaa",
+    "closedAt": null,
+    "createdAt": "2026-10-01T21:16:54Z",
+    "headRefName": "feat/mech-framework",
+    "headRefOid": "4444bbbb4444bbbb4444bbbb4444bbbb4444bbbb",
+    "headRepository": {"id": "R_cadlib", "name": "cadlib", "nameWithOwner": ""},
+    "headRepositoryOwner": {"id": "U_me", "name": "Jane Doe", "login": "JaneDoe"},
+    "isDraft": true,
+    "mergeable": "MERGEABLE",
+    "mergedAt": null,
+    "number": 4,
+    "state": "OPEN",
+    "title": "Add mech: mechanism analysis framework (kinematics, clearances, loads, viewer)",
+    "updatedAt": "2026-10-01T21:16:54Z",
+    "url": "https://github.com/JaneDoe/cadlib/pull/4"
+  }
+]

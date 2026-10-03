@@ -1,0 +1,99 @@
+{
+  "data": {
+    "repository": {
+      "pullRequest": {
+        "reviewThreads": {
+          "pageInfo": {"hasNextPage": false, "endCursor": "Y3Vyc29yOnYyOpHOAAAAAw=="},
+          "nodes": [
+            {
+              "id": "PRRT_open_current",
+              "isResolved": false,
+              "isOutdated": false,
+              "path": "mech/solver.py",
+              "line": 42,
+              "comments": {
+                "nodes": [
+                  {
+                    "id": "PRRC_reviewer_a_thread",
+                    "author": {"login": "reviewer-a"},
+                    "body": "This loses the tolerance argument; pass it through to `solve_loop`.",
+                    "createdAt": "2026-09-30T10:05:00Z",
+                    "url": "https://github.com/JaneDoe/cadlib/pull/4#discussion_r300000001"
+                  },
+                  {
+                    "id": "PRRC_me_reply",
+                    "author": {"login": "JaneDoe"},
+                    "body": "Good catch, will fix.",
+                    "createdAt": "2026-09-30T10:30:00Z",
+                    "url": "https://github.com/JaneDoe/cadlib/pull/4#discussion_r300000002"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "PRRT_resolved_outdated",
+              "isResolved": true,
+              "isOutdated": true,
+              "path": "mech/joints.py",
+              "line": null,
+              "comments": {
+                "nodes": [
+                  {
+                    "id": "PRRC_copilot",
+                    "author": {"login": "copilot-pull-request-reviewer"},
+                    "body": "Requirement: document the joint limit units.",
+                    "createdAt": "2026-09-28T15:38:35Z",
+                    "url": "https://github.com/JaneDoe/cadlib/pull/4#discussion_r300000003"
+                  },
+                  {
+                    "id": "PRRC_me_addressed",
+                    "author": {"login": "JaneDoe"},
+                    "body": "Addressed in 7777eee.",
+                    "createdAt": "2026-09-28T16:17:55Z",
+                    "url": "https://github.com/JaneDoe/cadlib/pull/4#discussion_r300000004"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "PRRT_open_outdated",
+              "isResolved": false,
+              "isOutdated": true,
+              "path": "mech/loads.py",
+              "line": 7,
+              "comments": {
+                "nodes": [
+                  {
+                    "id": "PRRC_reviewer_b_outdated",
+                    "author": {"login": "reviewer-b"},
+                    "body": "Nit: rename `f` to `force`.",
+                    "createdAt": "2026-09-28T16:00:00Z",
+                    "url": "https://github.com/JaneDoe/cadlib/pull/4#discussion_r300000005"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "PRRT_ghost",
+              "isResolved": false,
+              "isOutdated": false,
+              "path": "README.md",
+              "line": 1,
+              "comments": {
+                "nodes": [
+                  {
+                    "id": "PRRC_ghost",
+                    "author": null,
+                    "body": "Comment from a deleted account.",
+                    "createdAt": "2026-09-28T17:00:00Z",
+                    "url": "https://github.com/JaneDoe/cadlib/pull/4#discussion_r300000006"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "author": {"id": "U_a", "is_bot": false, "login": "reviewer-a", "name": "Reviewer A"},
+  "baseRefName": "main",
+  "baseRefOid": "aaaa1111aaaa1111aaaa1111aaaa1111aaaa1111",
+  "closedAt": null,
+  "createdAt": "2026-10-01T11:00:00Z",
+  "headRefName": "feat/direct-request",
+  "headRefOid": "cccc3333cccc3333cccc3333cccc3333cccc3333",
+  "headRepository": {"id": "R_fork", "name": "game", "nameWithOwner": ""},
+  "headRepositoryOwner": {"id": "U_a", "name": "Reviewer A", "login": "reviewer-a"},
+  "isDraft": false,
+  "mergeable": "MERGEABLE",
+  "mergedAt": null,
+  "number": 21,
+  "reviewRequests": [
+    {"__typename": "User", "login": "JaneDoe"},
+    {"__typename": "Team", "name": "Core", "slug": "core"}
+  ],
+  "state": "OPEN",
+  "title": "Direct review request",
+  "updatedAt": "2026-10-01T12:00:00Z",
+  "url": "https://github.com/JaneDoe/game/pull/21"
+}

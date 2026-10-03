@@ -1,0 +1,33 @@
+{
+  "data": {
+    "repository": {
+      "pullRequest": {
+        "commits": {
+          "pageInfo": {"hasNextPage": false, "endCursor": "MQ"},
+          "nodes": [
+            {
+              "commit": {
+                "oid": "5555cccc5555cccc5555cccc5555cccc5555cccc",
+                "committedDate": "2026-09-29T19:32:35Z",
+                "message": "Add uv project scaffold for mech framework\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>",
+                "additions": 120,
+                "deletions": 3,
+                "author": {"email": "me@example.com", "user": {"login": "JaneDoe"}}
+              }
+            },
+            {
+              "commit": {
+                "oid": "6666dddd6666dddd6666dddd6666dddd6666dddd",
+                "committedDate": "2026-09-29T19:47:08Z",
+                "message": "Add mech framework spec v2",
+                "additions": 410,
+                "deletions": 12,
+                "author": {"email": "someone@example.invalid", "user": null}
+              }
+            }
+          ]
+        }
+      }
+    }
+  }
+}
